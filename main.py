@@ -12,13 +12,17 @@ import logging
 
 logging.basicConfig(filename='Rapport_logg.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 locale.setlocale(locale.LC_TIME, '')
+try:
+    ressources = sys._MEIPASS
+except:
+    ressources = "."
 
 class Pnl_Mc4u_Refactor(QtWidgets.QMainWindow):
     def __init__(self, title="default", Parent=None):
         super(Pnl_Mc4u_Refactor, self).__init__(Parent)
         logging.debug("Début création IHM")
         self.ui = Ui_MainWindow()
-        # self.ui.setWindowIcon(QtGui.QIcon("nticon.png"))
+        self.setWindowIcon(QtGui.QIcon(os.path.join(ressources, "nticon.png")))
         self.ui.setupUi(self)
         self.tempfile = ""
         self.pathtxt = ""

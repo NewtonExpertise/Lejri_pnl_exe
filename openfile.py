@@ -9,19 +9,22 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import tempfile
 import os
 import sys
-
+try:
+    ressources = sys._MEIPASS
+except:
+    ressources = "."
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setFixedSize(320, 330)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(os.path.join("nticon.jpg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(os.path.join(ressources,"nticon.jpg")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setPixmap(QtGui.QPixmap(os.path.join('nt_no_1bg.png')).scaled(80,80,QtCore.Qt.KeepAspectRatio))
+        self.label.setPixmap(QtGui.QPixmap(os.path.join(ressources,'nt_no_1bg.png')).scaled(80,80,QtCore.Qt.KeepAspectRatio))
         self.label.move(110,260)
         self.openfile = QtWidgets.QPushButton(self.centralwidget)
         self.openfile.setGeometry(QtCore.QRect(30, 20, 261, 31))

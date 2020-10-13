@@ -7,6 +7,10 @@ import sys
 import os
 
 locale.setlocale(locale.LC_TIME, '')
+try:
+    ressources = sys._MEIPASS
+except:
+    ressources = "."
 
 def excel_pnl_mc4u(donneePnl_Mc4u, periode_selected, nomsociete = ''):
     """
@@ -183,8 +187,8 @@ def excel_pnl_mc4u(donneePnl_Mc4u, periode_selected, nomsociete = ''):
         ws_pnl.set_row(Firstline-3, 46.5)
         ws_pnl.set_row(Firstline, 27)
         # Création de l'en-tête de la feuille excel
-        ws_pnl.insert_image(Firstline-3, 0, os.path.join('logonewton.png'), {'x_scale': 0.25, 'y_scale': 0.25})
-        ws_pnl.insert_image(Firstline-3, 4, os.path.join('ma.png'),{'x_scale': 0.39, 'y_scale': 0.39, 'x_offset': 85.5, 'y_offset': 0})
+        ws_pnl.insert_image(Firstline-3, 0, os.path.join(ressources,'logonewton.png'), {'x_scale': 0.25, 'y_scale': 0.25})
+        ws_pnl.insert_image(Firstline-3, 4, os.path.join(ressources,'ma.png'),{'x_scale': 0.39, 'y_scale': 0.39, 'x_offset': 85.5, 'y_offset': 0})
         # ws_pnl.write(Firstline-2, 0, , en_tete)
         # ws_pnl.write(Firstline-3, 1, "Nom de l'entreprise", en_tete_top)
         ws_pnl.merge_range('B1:D1', nomsociete, en_tete)
